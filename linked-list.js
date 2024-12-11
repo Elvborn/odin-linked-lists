@@ -1,6 +1,5 @@
 export default class LinkedList {
 	headNode = null;
-	tailNode = null;
 	listSize = 0;
 
 	get head() {
@@ -8,7 +7,8 @@ export default class LinkedList {
 	}
 
 	get tail() {
-		return this.tailNode;
+		if (this.listSize <= 0) return null;
+		return this.at(this.listSize - 1);
 	}
 
 	get size() {
