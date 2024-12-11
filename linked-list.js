@@ -1,4 +1,4 @@
-class LinkedList {
+export default class LinkedList {
 	headNode = null;
 	tailNode = null;
 	listSize = 0;
@@ -160,11 +160,3 @@ class Node {
 		this.nextNode = node;
 	}
 }
-
-const list = new LinkedList();
-list.append(1);
-
-list.removeAt(0);
-
-console.log("Size: " + list.size);
-console.log(list.toString());
