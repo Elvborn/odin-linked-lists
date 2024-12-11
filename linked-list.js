@@ -59,7 +59,7 @@ class LinkedList {
 	}
 
 	at(index) {
-		if (index >= this.listSize) return null;
+		if (index >= this.listSize || index < 0) return null;
 
 		function getNode(node, i) {
 			if (i === 0) return node;
@@ -121,6 +121,26 @@ class LinkedList {
 
 		this.listSize++;
 	}
+
+	removeAt(index) {
+		if (index >= this.listSize || index < 0) return;
+
+		const prevNode = this.at(index - 1);
+		const currentNode = prevNode ? prevNode.nextNode : this.at(index);
+		const nextNode = prevNode ? currentNode.nextNode : null;
+
+		if (prevNode || nextNode) {
+			prevNode.nextNode = nextNode;
+		} else if (!prevNode) {
+			this.headNode = currentNode.nextNode;
+
+			if (nextNode) node.nextNode = nextNode;
+		} else {
+			if (prevNode) prevNode.nextNode = null;
+		}
+
+		this.listSize--;
+	}
 }
 
 class Node {
@@ -143,8 +163,8 @@ class Node {
 
 const list = new LinkedList();
 list.append(1);
-list.append(3);
-list.prepend("Test");
+
+list.removeAt(0);
 
 console.log("Size: " + list.size);
 console.log(list.toString());
