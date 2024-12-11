@@ -82,14 +82,14 @@ class LinkedList {
 	}
 
 	find(value) {
-		function getNode(node, val) {
+		function getNode(node, val, i) {
 			if (node === null) return null;
-			if (node.value === val) return node;
+			if (node.value === val) return i;
 
-			return getNode(node.nextNode, val);
+			return getNode(node.nextNode, val, i + 1);
 		}
 
-		return getNode(this.headNode, value);
+		return getNode(this.headNode, value, 0);
 	}
 
 	toString() {
@@ -128,3 +128,5 @@ list.prepend("Test");
 
 console.log("Size: " + list.size);
 console.log(list.toString());
+
+console.log(list.find(3));
