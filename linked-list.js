@@ -101,6 +101,26 @@ class LinkedList {
 
 		return getNode(this.headNode);
 	}
+
+	insertAt(value, index) {
+		if (index >= this.listSize) {
+			this.append(value);
+			return;
+		}
+
+		const node = new Node(value);
+
+		if (index <= 0) {
+			node.nextNode = this.headNode;
+			this.headNode = node;
+		} else {
+			const prevNode = this.at(index - 1);
+			node.nextNode = prevNode.nextNode;
+			prevNode.nextNode = node;
+		}
+
+		this.listSize++;
+	}
 }
 
 class Node {
@@ -128,5 +148,3 @@ list.prepend("Test");
 
 console.log("Size: " + list.size);
 console.log(list.toString());
-
-console.log(list.find(3));
